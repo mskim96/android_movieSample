@@ -3,10 +3,43 @@ package com.minseongkim.android_moviesample.presentation.view.auth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.minseongkim.android_moviesample.R
+import com.minseongkim.android_moviesample.databinding.ActivityMainBinding
 
 class AuthActivity : AppCompatActivity() {
+
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // start and add fragment authMainFragment
+        supportFragmentManager.beginTransaction()
+            .add(R.id.authMainFrameLayout, AuthMainFragment()).commit()
+    }
+
+    /**
+     * function for navigate fragment
+     */
+    fun setFragment(index: Int) {
+        when (index) {
+            0 -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.authMainFrameLayout, AuthSignInFragment()).addToBackStack(null)
+                    .commit()
+            }
+            1 -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.authMainFrameLayout, AuthSignUpFragment()).addToBackStack(null)
+                    .commit()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
