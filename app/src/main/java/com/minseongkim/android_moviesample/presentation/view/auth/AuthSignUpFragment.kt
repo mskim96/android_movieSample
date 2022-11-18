@@ -1,19 +1,25 @@
 package com.minseongkim.android_moviesample.presentation.view.auth
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.minseongkim.android_moviesample.databinding.FragmentAuthSignUpBinding
+import com.minseongkim.android_moviesample.presentation.viewModel.auth.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthSignUpFragment : Fragment() {
 
     private val TAG: String = "AuthSignUpFragment"
 
     private var _binding: FragmentAuthSignUpBinding? = null
     private val binding get() = _binding!!
+    private val authViewModel: AuthViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(AuthViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -27,11 +33,14 @@ class AuthSignUpFragment : Fragment() {
                 val password = signUpPassword.text.toString()
                 val verifyPassword = signUpVerifyPassword.text.toString()
 
-                Log.d(TAG, "onCreateView: $email , $password, $verifyPassword")
+                signUp(email = email, password = password, verifyPassword = verifyPassword)
             }
         }
-
         return binding.root
+    }
+
+    private fun signUp(email: String, password: String, verifyPassword: String) {
+        authViewModel.signUp(email = email, password = password, verifyPassword = verifyPassword)
     }
 
     override fun onDestroy() {

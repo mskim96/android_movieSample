@@ -24,10 +24,12 @@ class AuthMainFragment : Fragment() {
 
         // navigate signIn, signUp page
         with(binding) {
-            signInButton.setOnClickListener {
+            signInNav.setOnClickListener {
+                // Sign in
                 (activity as AuthActivity).setFragment(0)
             }
-            signUpButton.setOnClickListener {
+            signUpNav.setOnClickListener {
+                // Sign up
                 (activity as AuthActivity).setFragment(1)
             }
         }

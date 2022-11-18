@@ -6,5 +6,5 @@ import com.minseongkim.android_moviesample.data.model.UserEntity
  * User datasource interface.
  */
 interface UserDatasource {
-    suspend fun signUp(): UserEntity
+    fun signUp(user: UserEntity): Long
 }

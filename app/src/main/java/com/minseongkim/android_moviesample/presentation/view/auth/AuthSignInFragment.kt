@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.minseongkim.android_moviesample.databinding.FragmentAuthSignInBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthSignInFragment : Fragment() {
 
     private val TAG: String = "AuthLoginFragment"

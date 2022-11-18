@@ -11,16 +11,13 @@ import androidx.room.PrimaryKey
 data class UserEntity(
 
     @PrimaryKey(autoGenerate = true)
-    val uid: Int,
+    val uid: Long = 0,
 
     @ColumnInfo(name = "email")
     var email: String,
 
     @ColumnInfo(name = "password")
     var password: String,
-
-    @ColumnInfo(name = "username")
-    var username: String?,
 
     @ColumnInfo(name = "created_at")
     val createdAt: Long = System.currentTimeMillis(),
