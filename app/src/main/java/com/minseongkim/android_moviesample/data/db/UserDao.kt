@@ -13,4 +13,9 @@ import com.minseongkim.android_moviesample.data.model.UserEntity
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun signUp(user: UserEntity): Long
+
+
+
+    @Query("SELECT * FROM user_information_table WHERE email = :email")
+    fun getExistEmail(email: String): Boolean
 }

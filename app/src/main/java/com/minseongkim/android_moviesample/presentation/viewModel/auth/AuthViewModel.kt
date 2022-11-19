@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val signUpUseCase: SignUpUseCase
+    private val signUpUseCase: SignUpUseCase,
 ) : ViewModel() {
 
     private val _userInfo = MutableLiveData<Long>()
@@ -28,13 +28,27 @@ class AuthViewModel @Inject constructor(
     fun signUp(email: String, password: String, verifyPassword: String) {
         if (email.isNullOrBlank()) {
             _userState.postValue(UserState.Error("Email is Empty"))
+            return
+        }
+
+        if (password.isNullOrBlank() || password.length < 6) {
+            _userState.postValue(UserState.Error("Please check your password. required length more than 6"))
+            return
         }
 
         if (password != verifyPassword) {
             _userState.postValue(UserState.Error("Password doesn't not match"))
+            return
         }
 
         viewModelScope.launch(Dispatchers.IO) {
+
+            val validation = signUpUseCase.getExistEmail(email = email)
+            if (validation) {
+                _userState.postValue(UserState.Error("Email already exist"))
+                return@launch
+            }
+
             try {
                 val data = signUpUseCase.signUp(
                     email = email,

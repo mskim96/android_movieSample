@@ -7,4 +7,6 @@ import com.minseongkim.android_moviesample.data.model.UserEntity
  */
 interface UserDatasource {
     fun signUp(user: UserEntity): Long
+
+    fun getExistEmail(email: String): Boolean
 }

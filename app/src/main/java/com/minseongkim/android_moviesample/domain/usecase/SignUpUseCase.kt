@@ -7,4 +7,8 @@ class SignUpUseCase @Inject constructor(private var authRepository: AuthReposito
     suspend fun signUp(email: String, password: String): Long {
         return authRepository.signUp(email = email, password = password)
     }
+
+    suspend fun getExistEmail(email: String): Boolean {
+        return authRepository.getExistEmail(email)
+    }
 }

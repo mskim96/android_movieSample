@@ -4,8 +4,12 @@ import com.minseongkim.android_moviesample.data.db.UserDao
 import com.minseongkim.android_moviesample.data.model.UserEntity
 import javax.inject.Inject
 
-class UserDatasourceImpl @Inject constructor(private val userDao: UserDao): UserDatasource {
+class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : UserDatasource {
     override fun signUp(user: UserEntity): Long {
         return userDao.signUp(user)
+    }
+
+    override fun getExistEmail(email: String): Boolean {
+        return userDao.getExistEmail(email)
     }
 }
