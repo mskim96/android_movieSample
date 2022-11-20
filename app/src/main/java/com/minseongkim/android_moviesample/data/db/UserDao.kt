@@ -14,7 +14,8 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun signUp(user: UserEntity): Long
 
-
+    @Query("SELECT * FROM user_information_table WHERE email Like :email AND password Like :password")
+    fun signIn(email: String, password: String): Long
 
     @Query("SELECT * FROM user_information_table WHERE email = :email")
     fun getExistEmail(email: String): Boolean

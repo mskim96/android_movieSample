@@ -9,6 +9,10 @@ class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : Use
         return userDao.signUp(user)
     }
 
+    override fun signIn(email: String, password: String): Long {
+        return userDao.signIn(email = email, password = password)
+    }
+
     override fun getExistEmail(email: String): Boolean {
         return userDao.getExistEmail(email)
     }
