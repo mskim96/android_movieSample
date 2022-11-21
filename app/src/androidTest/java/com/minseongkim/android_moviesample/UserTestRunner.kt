@@ -5,10 +5,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.filters.SmallTest
 import androidx.test.runner.AndroidJUnitRunner
-import com.minseongkim.android_moviesample.data.db.UserDao
-import com.minseongkim.android_moviesample.data.db.UserDatabase
-import com.minseongkim.android_moviesample.data.model.UserEntity
-import com.minseongkim.android_moviesample.presentation.Hilt.DataModule
+import com.minseongkim.android_moviesample.data.db.auth.UserDao
+import com.minseongkim.android_moviesample.data.db.auth.UserDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,12 +14,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
-import dagger.hilt.android.testing.UninstallModules
 import dagger.hilt.components.SingletonComponent
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 import javax.inject.Inject
 import javax.inject.Named
 

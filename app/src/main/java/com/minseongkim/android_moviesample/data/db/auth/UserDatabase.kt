@@ -1,8 +1,8 @@
-package com.minseongkim.android_moviesample.data.db
+package com.minseongkim.android_moviesample.data.db.auth
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.minseongkim.android_moviesample.data.model.UserEntity
+import com.minseongkim.android_moviesample.data.model.auth.UserEntity
 
 /**
  * Define Room database.

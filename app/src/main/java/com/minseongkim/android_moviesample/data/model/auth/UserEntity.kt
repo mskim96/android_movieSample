@@ -1,4 +1,4 @@
-package com.minseongkim.android_moviesample.data.model
+package com.minseongkim.android_moviesample.data.model.auth
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

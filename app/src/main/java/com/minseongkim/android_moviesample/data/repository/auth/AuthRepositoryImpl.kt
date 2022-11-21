@@ -1,8 +1,8 @@
-package com.minseongkim.android_moviesample.data.repository
+package com.minseongkim.android_moviesample.data.repository.auth
 
-import com.minseongkim.android_moviesample.data.datasource.UserDatasource
-import com.minseongkim.android_moviesample.data.model.UserEntity
-import com.minseongkim.android_moviesample.domain.repository.AuthRepository
+import com.minseongkim.android_moviesample.data.datasource.auth.UserDatasource
+import com.minseongkim.android_moviesample.data.model.auth.UserEntity
+import com.minseongkim.android_moviesample.domain.repository.auth.AuthRepository
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(private val userDatasource: UserDatasource) :
@@ -28,5 +28,9 @@ class AuthRepositoryImpl @Inject constructor(private val userDatasource: UserDat
 
     override fun getExistEmail(email: String): Boolean {
         return userDatasource.getExistEmail(email)
+    }
+
+    override fun getUserById(id: Long): UserEntity {
+        return userDatasource.getUserById(id)
     }
 }

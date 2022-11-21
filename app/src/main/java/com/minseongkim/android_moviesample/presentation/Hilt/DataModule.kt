@@ -2,12 +2,12 @@ package com.minseongkim.android_moviesample.presentation.Hilt
 
 import android.content.Context
 import androidx.room.Room
-import com.minseongkim.android_moviesample.data.datasource.UserDatasource
-import com.minseongkim.android_moviesample.data.datasource.UserDatasourceImpl
-import com.minseongkim.android_moviesample.data.db.UserDao
-import com.minseongkim.android_moviesample.data.db.UserDatabase
-import com.minseongkim.android_moviesample.domain.repository.AuthRepository
-import com.minseongkim.android_moviesample.data.repository.AuthRepositoryImpl
+import com.minseongkim.android_moviesample.data.datasource.auth.UserDatasource
+import com.minseongkim.android_moviesample.data.datasource.auth.UserDatasourceImpl
+import com.minseongkim.android_moviesample.data.db.auth.UserDao
+import com.minseongkim.android_moviesample.data.db.auth.UserDatabase
+import com.minseongkim.android_moviesample.domain.repository.auth.AuthRepository
+import com.minseongkim.android_moviesample.data.repository.auth.AuthRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

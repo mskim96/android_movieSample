@@ -17,9 +17,8 @@ class AuthActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // start and add fragment authMainFragment
         supportFragmentManager.beginTransaction()
-            .add(R.id.authMainFrameLayout, AuthMainFragment()).commit()
+            .add(R.id.authMainFrameLayout, AuthSignInFragment()).commit()
     }
 
     /**

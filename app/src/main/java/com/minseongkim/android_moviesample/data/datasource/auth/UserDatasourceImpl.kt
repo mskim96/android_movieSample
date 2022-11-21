@@ -1,7 +1,7 @@
-package com.minseongkim.android_moviesample.data.datasource
+package com.minseongkim.android_moviesample.data.datasource.auth
 
-import com.minseongkim.android_moviesample.data.db.UserDao
-import com.minseongkim.android_moviesample.data.model.UserEntity
+import com.minseongkim.android_moviesample.data.db.auth.UserDao
+import com.minseongkim.android_moviesample.data.model.auth.UserEntity
 import javax.inject.Inject
 
 class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : UserDatasource {
@@ -15,5 +15,9 @@ class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : Use
 
     override fun getExistEmail(email: String): Boolean {
         return userDao.getExistEmail(email)
+    }
+
+    override fun getUserById(id: Long): UserEntity {
+        return userDao.getUserById(id)
     }
 }

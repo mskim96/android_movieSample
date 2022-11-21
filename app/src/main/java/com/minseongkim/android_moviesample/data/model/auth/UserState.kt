@@ -1,4 +1,4 @@
-package com.minseongkim.android_moviesample.data.model
+package com.minseongkim.android_moviesample.data.model.auth
 
 sealed class UserState {
     data class Success(val data: Long) : UserState()

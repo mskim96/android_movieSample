@@ -1,6 +1,6 @@
-package com.minseongkim.android_moviesample.domain.usecase
+package com.minseongkim.android_moviesample.domain.usecase.auth
 
-import com.minseongkim.android_moviesample.domain.repository.AuthRepository
+import com.minseongkim.android_moviesample.domain.repository.auth.AuthRepository
 import javax.inject.Inject
 
 class SignUpUseCase @Inject constructor(private var authRepository: AuthRepository) {

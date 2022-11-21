@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FDFDFD</color>
     <color name="background_dark">#292929</color>
+    <color name="compat_white">#d8dbe7</color>
+    <color name="auth_textColor">#878c92</color>
 </resources>
