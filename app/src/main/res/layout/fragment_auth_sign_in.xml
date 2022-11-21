@@ -4,45 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/card_fragment"
+    android:background="@drawable/auth_card_fragment"
     android:backgroundTint="@color/white"
     tools:context=".presentation.view.auth.AuthSignInFragment">
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:visibility="gone"
         android:id="@+id/appCompatButton"
         android:layout_width="120dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/social_button"
-        android:drawableBottom="@drawable/google_resize"
-        android:text=""
+        android:layout_marginTop="32dp"
+        android:background="@drawable/auth_social_button"
+        android:drawableBottom="@drawable/auth_google_resize"
         android:textAllCaps="false"
         android:textColor="@color/auth_textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/requestSignUpButton"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:visibility="gone"
         android:layout_width="120dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/social_button"
-        android:drawableBottom="@drawable/line_resize"
-        android:text=""
+        android:background="@drawable/auth_social_button"
+        android:drawableBottom="@drawable/auth_line_resize"
         android:textAllCaps="false"
         android:textColor="@color/auth_textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/requestSignUpButton"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -50,15 +50,16 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
+        android:text="Welcome"
         android:textColor="@color/auth_textColor"
-        android:textSize="40sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.056" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -66,6 +67,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        app:startIconDrawable="@drawable/auth_user_icon"
         android:textColorHint="@color/auth_textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -79,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:hint="Email"
+            android:textColorHint="@color/auth_textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -93,6 +96,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        app:startIconDrawable="@drawable/auth_password_icon"
+        app:endIconMode="password_toggle"
         android:textColorHint="@color/auth_textColor"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.0"
@@ -120,7 +125,7 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/default_button"
+        android:background="@drawable/auth_default_button"
         android:text="Sign In"
         android:textAllCaps="false"
         android:textColor="@color/auth_textColor"
@@ -133,31 +138,16 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/requestSignUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="You don't have account?"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.309"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/requestSignInButton" />
-
-    <TextView
-        android:id="@+id/requestSignUpButton"
-        android:layout_width="47dp"
-        android:layout_height="18dp"
         android:text="@string/sign_up_decoration"
-        android:textAllCaps="false"
         android:textColor="@color/auth_textColor"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/requestSignInButton" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
