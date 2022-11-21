@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/auth_card_fragment"
     android:backgroundTint="@color/white"
     tools:context=".presentation.view.auth.AuthSignUpFragment"
     tools:ignore="InvalidId">
@@ -15,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign up"
-        android:textColor="@color/auth_textColor"
+        android:textColor="@color/default_text_color"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,16 +112,14 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/auth_default_button"
+        android:background="@drawable/default_button"
         android:text="Sign up"
         android:textAllCaps="false"
-        android:textColor="@color/auth_textColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        android:textColor="@color/default_text_color"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

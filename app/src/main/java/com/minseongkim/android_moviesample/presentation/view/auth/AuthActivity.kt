@@ -18,7 +18,7 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.authMainFrameLayout, AuthSignInFragment()).commit()
+            .add(R.id.authMainFrameLayout, AuthMainFragment()).commit()
     }
 
     /**

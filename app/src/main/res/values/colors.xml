@@ -7,7 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FDFDFD</color>
-    <color name="background_dark">#292929</color>
+
+    <!--Background-->
+    <color name="background_dark">#202124</color>
     <color name="compat_white">#d8dbe7</color>
-    <color name="auth_textColor">#757575</color>
+    <color name="default_text_color">#E7EAED</color>
+
+    <!--Button-->
+    <color name="default_button_color">#3C9AD8</color>
+    <color name="pressed_button_color">#317DAF</color>
+
+    <!--Input-->
+    <color name="default_input_color">#252A34</color>
 </resources>
