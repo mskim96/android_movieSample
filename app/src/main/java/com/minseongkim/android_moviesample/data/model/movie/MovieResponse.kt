@@ -21,7 +21,7 @@ data class MovieResponse(
             val year: Int,
 
             @SerializedName("rating")
-            val rating: Int,
+            val rating: Float,
 
             @SerializedName("genres")
             val genres: List<String>,

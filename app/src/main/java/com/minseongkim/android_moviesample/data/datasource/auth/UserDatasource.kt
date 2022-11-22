@@ -1,6 +1,7 @@
 package com.minseongkim.android_moviesample.data.datasource.auth
 
 import com.minseongkim.android_moviesample.data.model.auth.UserEntity
+import kotlinx.coroutines.flow.Flow
 
 /**
  * User datasource interface.

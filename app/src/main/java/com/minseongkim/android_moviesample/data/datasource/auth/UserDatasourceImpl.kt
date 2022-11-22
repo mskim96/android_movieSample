@@ -2,6 +2,8 @@ package com.minseongkim.android_moviesample.data.datasource.auth
 
 import com.minseongkim.android_moviesample.data.db.auth.UserDao
 import com.minseongkim.android_moviesample.data.model.auth.UserEntity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : UserDatasource {

@@ -5,7 +5,7 @@ import com.minseongkim.android_moviesample.domain.repository.auth.AuthRepository
 import javax.inject.Inject
 
 class SignInUseCase @Inject constructor(private val authRepository: AuthRepository) {
-    suspend fun signIn(email: String, password: String): Long {
+    fun signIn(email: String, password: String): Long {
         return authRepository.signIn(email = email, password = password)
     }
 

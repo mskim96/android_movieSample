@@ -13,6 +13,9 @@ data class UserEntity(
     @PrimaryKey(autoGenerate = true)
     val uid: Long = 0,
 
+    @ColumnInfo(name = "username")
+    var username: String,
+
     @ColumnInfo(name = "email")
     var email: String,
 

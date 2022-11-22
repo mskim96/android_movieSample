@@ -1,11 +1,10 @@
 package com.minseongkim.android_moviesample.presentation.view.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.minseongkim.android_moviesample.R
+import androidx.fragment.app.Fragment
 import com.minseongkim.android_moviesample.databinding.FragmentAuthMainBinding
 
 class AuthMainFragment : Fragment() {
