@@ -1,7 +1,7 @@
 package com.minseongkim.android_moviesample.presentation.view.movie
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.minseongkim.android_moviesample.R
 import com.minseongkim.android_moviesample.databinding.ActivityMovieBinding
 import dagger.hilt.android.AndroidEntryPoint

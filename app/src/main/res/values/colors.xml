@@ -21,5 +21,5 @@
     <color name="default_input_color">#252A34</color>
 
     <!--skeleton-->
-    <color name="skeleton_layout_color">#C2C2C2</color>
+    <color name="skeleton_layout_color">#959595</color>
 </resources>

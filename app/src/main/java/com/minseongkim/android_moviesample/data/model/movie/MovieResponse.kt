@@ -8,9 +8,9 @@ data class MovieResponse(
     val data: MovieData
 ) {
     data class MovieData(
-        val movies: List<Movie>
+        val movies: List<MovieModel>
     ) {
-        data class Movie(
+        data class MovieModel(
             @SerializedName("id")
             val id: Int,
 
