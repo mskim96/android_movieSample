@@ -7,13 +7,79 @@
     android:background="@color/background_dark"
     tools:context=".presentation.view.movie.MovieActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/main_logo"
+        app:layout_constraintBottom_toTopOf="@+id/movieMainFrameLayout"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.463" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/textInputLayoutStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.562"
+        app:layout_constraintWidth_percent="0.5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/default_input"
+            android:hint="Search Movie"
+            android:textColor="@color/default_text_color"
+            android:textColorHint="@color/default_text_color"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/movie_search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.36" />
+
     <FrameLayout
+        android:background="@color/white"
         android:id="@+id/movieMainFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.221">
+
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

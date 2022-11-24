@@ -18,6 +18,9 @@ class MovieViewModel @Inject constructor(private val getNewMovieUseCase: GetNewM
     private val _movieResponse = MutableLiveData<MovieResponse.MovieData>()
     val movieResponse: LiveData<MovieResponse.MovieData> get() = _movieResponse
 
+    // TODO : Init 시 여러가지 Movie Data 를 가져오게 변경한다.
+    // TODO : Loading 시 스켈레톤 UI 가 표시되게 정의한다.
+
     fun getNewMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             val data = getNewMovieUseCase.getNewMovies()
