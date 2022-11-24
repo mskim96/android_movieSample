@@ -8,8 +8,8 @@ import com.minseongkim.android_moviesample.databinding.MovieListBinding
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    private val dummy = MovieResponse.MovieData.Movie(0, "0", 0, 0F, listOf(), "0", "0")
-    private val movieList = mutableListOf<MovieResponse.MovieData.Movie>()
+    private val dummy = MovieResponse.MovieData.MovieModel(0, "0", 0, 0F, listOf(), "0", "0")
+    private val movieList = mutableListOf<MovieResponse.MovieData.MovieModel>()
 
     init {
         for(i in 1..5) {
@@ -19,7 +19,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(private val binding: MovieListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(currentMovie: MovieResponse.MovieData.Movie) {
+        fun bind(currentMovie: MovieResponse.MovieData.MovieModel) {
             binding.movie = currentMovie
         }
     }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetNewMovieUseCase @Inject constructor(private val movieRepository: MovieRepository) {
-    suspend fun getNewMovies() {
-        movieRepository.getNewMovies()
+    suspend fun getNewMovies(): Flow<List<Movie>> {
+       return movieRepository.getNewMovies()
     }
 }
