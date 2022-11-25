@@ -19,7 +19,11 @@ class MovieActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.movieSearchButton.setOnClickListener {
-            binding.movieSearchInput.visibility = View.VISIBLE
+            if (binding.movieSearchInput.visibility == View.VISIBLE) {
+                binding.movieSearchInput.visibility = View.GONE
+            } else {
+                binding.movieSearchInput.visibility = View.VISIBLE
+            }
         }
 
         supportFragmentManager.beginTransaction()

@@ -24,4 +24,22 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
             movieMapper(it)
         }
     }
+
+    override suspend fun getGenreDramaMovie(): Flow<List<Movie>> {
+        return dataSource.getGenreDramaMovie().map {
+            movieMapper(it)
+        }
+    }
+
+    override suspend fun getGenreHorrorMovie(): Flow<List<Movie>> {
+        return dataSource.getGenreHorrorMovie().map {
+            movieMapper(it)
+        }
+    }
+
+    override suspend fun getGenreSFMovie(): Flow<List<Movie>> {
+        return dataSource.getGenreSFMovie().map {
+            movieMapper(it)
+        }
+    }
 }

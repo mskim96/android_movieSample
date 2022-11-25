@@ -10,4 +10,13 @@ interface ApiInterface {
 
     @GET("/api/v2/list_movies.json?minimum_rating=8")
     suspend fun getTopRatingMovie(): Response<MovieResponse>
+
+    @GET("api/v2/list_movies.json?genre=drama")
+    suspend fun getGenreDramaMovie(): Response<MovieResponse>
+
+    @GET("api/v2/list_movies.json?genre=Horror")
+    suspend fun getGenreHorrorMovie(): Response<MovieResponse>
+
+    @GET("/api/v2/list_movies.json?genre=Sci-Fi")
+    suspend fun getGenreSFMovie(): Response<MovieResponse>
 }

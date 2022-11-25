@@ -22,4 +22,28 @@ class MovieDataSourceImpl @Inject constructor(private val apiInterface: ApiInter
             }
         }
     }
+
+    override suspend fun getGenreDramaMovie(): Flow<List<MovieResponse.MovieData.MovieModel>> {
+        return flow {
+            apiInterface.getGenreDramaMovie().body()?.data?.movies?.let {
+                emit(it)
+            }
+        }
+    }
+
+    override suspend fun getGenreHorrorMovie(): Flow<List<MovieResponse.MovieData.MovieModel>> {
+        return flow {
+            apiInterface.getGenreHorrorMovie().body()?.data?.movies?.let {
+                emit(it)
+            }
+        }
+    }
+
+    override suspend fun getGenreSFMovie(): Flow<List<MovieResponse.MovieData.MovieModel>> {
+        return flow {
+            apiInterface.getGenreSFMovie().body()?.data?.movies?.let {
+                emit(it)
+            }
+        }
+    }
 }
