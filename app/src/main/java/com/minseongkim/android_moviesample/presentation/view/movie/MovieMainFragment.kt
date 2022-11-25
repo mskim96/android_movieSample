@@ -1,5 +1,7 @@
 package com.minseongkim.android_moviesample.presentation.view.movie
 
+import android.app.Activity
+import android.content.ContextWrapper
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.minseongkim.android_moviesample.R
 import com.minseongkim.android_moviesample.data.model.movie.MovieState
 import com.minseongkim.android_moviesample.databinding.FragmentMovieMainBinding
+import com.minseongkim.android_moviesample.domain.model.Movie
 import com.minseongkim.android_moviesample.presentation.viewModel.movie.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,10 +31,20 @@ class MovieMainFragment : Fragment() {
         )
     }
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter() }
-    private val movieTopRatingAdapter: MovieTopRatingAdapter by lazy { MovieTopRatingAdapter() }
-    private val movieGenreDramaAdapter: MovieGenreDramaAdapter by lazy { MovieGenreDramaAdapter() }
-    private val movieGenreHorrorAdapter: MovieGenreHorrorAdapter by lazy { MovieGenreHorrorAdapter() }
-    private val movieGenreSFAdapter: MovieGenreSFAdapter by lazy { MovieGenreSFAdapter() }
+
+    private val movieTopRatingAdapter: MovieTopRatingAdapter by lazy {
+        MovieTopRatingAdapter()
+    }
+
+    private val movieGenreDramaAdapter: MovieGenreDramaAdapter by lazy {
+        MovieGenreDramaAdapter()
+    }
+    private val movieGenreHorrorAdapter: MovieGenreHorrorAdapter by lazy {
+        MovieGenreHorrorAdapter()
+    }
+    private val movieGenreSFAdapter: MovieGenreSFAdapter by lazy {
+        MovieGenreSFAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -62,6 +75,7 @@ class MovieMainFragment : Fragment() {
             genreSFMovieRecycle.adapter = movieGenreSFAdapter
         }
 
+        // Main Movie
         lifecycleScope.launch {
             movieViewModel.movieResponse.collect { data ->
                 when (data) {
@@ -74,6 +88,7 @@ class MovieMainFragment : Fragment() {
             }
         }
 
+        // Top Rating Movie
         lifecycleScope.launch {
             movieViewModel.topRatingResponse.collect { data ->
                 when (data) {
@@ -86,6 +101,7 @@ class MovieMainFragment : Fragment() {
             }
         }
 
+        // Genre Drama Movie
         lifecycleScope.launch {
             movieViewModel.genreDramaResponse.collect { data ->
                 when (data) {
@@ -98,6 +114,7 @@ class MovieMainFragment : Fragment() {
             }
         }
 
+        // Genre Horror Movie
         lifecycleScope.launch {
             movieViewModel.genreHorrorResponse.collect { data ->
                 when (data) {
@@ -110,6 +127,7 @@ class MovieMainFragment : Fragment() {
             }
         }
 
+        // Genre SF Movie
         lifecycleScope.launch {
             movieViewModel.genreSFResponse.collect { data ->
                 when (data) {
