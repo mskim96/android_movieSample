@@ -3,23 +3,20 @@ package com.minseongkim.android_moviesample.presentation.viewModel.movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.minseongkim.android_moviesample.data.model.movie.MovieResponse
+import com.bumptech.glide.Glide
 import com.minseongkim.android_moviesample.databinding.MovieListBinding
+import com.minseongkim.android_moviesample.domain.model.Movie
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    private val dummy = MovieResponse.MovieData.MovieModel(0, "0", 0, 0F, listOf(), "0", "0")
-    private val movieList = mutableListOf<MovieResponse.MovieData.MovieModel>()
+    private val dummy = Movie()
+    private var movieList = listOf(dummy, dummy, dummy, dummy)
 
-    init {
-        for(i in 1..5) {
-            movieList.add(dummy)
-        }
-    }
 
     inner class MovieViewHolder(private val binding: MovieListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(currentMovie: MovieResponse.MovieData.MovieModel) {
+        fun bind(currentMovie: Movie) {
+            Glide.with(binding.root).load(currentMovie.coverImg).override(130, 200).into(binding.imageView3)
             binding.movie = currentMovie
         }
     }
@@ -35,5 +32,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun getItemCount(): Int {
         return movieList.size
+    }
+
+    fun setData(data: List<Movie>) {
+        movieList = data
+        notifyDataSetChanged()
     }
 }

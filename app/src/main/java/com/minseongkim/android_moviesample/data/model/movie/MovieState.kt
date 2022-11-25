@@ -8,5 +8,5 @@ sealed class MovieState<T>(
     data class Error<T>(override val message: String, override val data: T?) :
         MovieState<T>(data, message)
 
-    class Loading<T> : MovieState<T>()
+    class Loading<T> : MovieState<T>(data = null)
 }

@@ -2,17 +2,22 @@ package com.minseongkim.android_moviesample.presentation.view.movie
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.minseongkim.android_moviesample.R
+import com.minseongkim.android_moviesample.data.model.movie.MovieState
 import com.minseongkim.android_moviesample.databinding.FragmentMovieMainBinding
 import com.minseongkim.android_moviesample.presentation.viewModel.movie.MovieAdapter
 import com.minseongkim.android_moviesample.presentation.viewModel.movie.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieMainFragment : Fragment() {
@@ -30,8 +35,6 @@ class MovieMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMovieMainBinding.inflate(inflater, container, false)
-
-        getNewMovies()
 
         /**
          * Main Video
@@ -53,11 +56,22 @@ class MovieMainFragment : Fragment() {
         binding.ratingTopMovieRecycle.adapter = movieAdapter
         binding.suggestionMovieRecycle.adapter = movieAdapter
 
-        return binding.root
-    }
+        lifecycleScope.launch {
+            movieViewModel.movieResponse.collect {
+                data ->
+                when(data) {
+                    is MovieState.Loading -> Log.d("TAG", "onCreateView: Loading")
+                    is MovieState.Success -> data.data.collect {
+                        movieAdapter.setData(it)
+                    }
+                    is MovieState.Error -> Log.d("TAG", "onCreateView: ${data.message}")
+                }
+            }
+        }
 
-    private fun getNewMovies() {
-        movieViewModel.getNewMovies()
+
+
+        return binding.root
     }
 
     override fun onDestroy() {
