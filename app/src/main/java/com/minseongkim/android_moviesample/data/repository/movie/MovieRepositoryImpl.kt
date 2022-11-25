@@ -18,4 +18,10 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
             movieMapper(it)
         }
     }
+
+    override suspend fun getTopRatingMovies(): Flow<List<Movie>> {
+        return dataSource.getTopRatingMovies().map {
+            movieMapper(it)
+        }
+    }
 }

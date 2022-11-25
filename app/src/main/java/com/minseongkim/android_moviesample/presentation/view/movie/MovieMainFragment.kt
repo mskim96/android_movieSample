@@ -14,9 +14,11 @@ import com.minseongkim.android_moviesample.R
 import com.minseongkim.android_moviesample.data.model.movie.MovieState
 import com.minseongkim.android_moviesample.databinding.FragmentMovieMainBinding
 import com.minseongkim.android_moviesample.presentation.viewModel.movie.MovieAdapter
+import com.minseongkim.android_moviesample.presentation.viewModel.movie.MovieTopRatingAdapter
 import com.minseongkim.android_moviesample.presentation.viewModel.movie.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -30,6 +32,7 @@ class MovieMainFragment : Fragment() {
         )
     }
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter() }
+    private val movieTopRatingAdapter: MovieTopRatingAdapter by lazy { MovieTopRatingAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -53,16 +56,29 @@ class MovieMainFragment : Fragment() {
         }
 
         binding.mainMovieRecycle.adapter = movieAdapter
-        binding.ratingTopMovieRecycle.adapter = movieAdapter
+        binding.ratingTopMovieRecycle.adapter = movieTopRatingAdapter
         binding.suggestionMovieRecycle.adapter = movieAdapter
 
         lifecycleScope.launch {
-            movieViewModel.movieResponse.collect {
-                data ->
-                when(data) {
+            movieViewModel.movieResponse.collect { data ->
+                when (data) {
                     is MovieState.Loading -> Log.d("TAG", "onCreateView: Loading")
                     is MovieState.Success -> data.data.collect {
                         movieAdapter.setData(it)
+                        Log.d("TAG", "onCreateView: $it")
+                    }
+                    is MovieState.Error -> Log.d("TAG", "onCreateView: ${data.message}")
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            movieViewModel.topRatingResponse.collect { data ->
+                when (data) {
+                    is MovieState.Loading -> Log.d("TAG", "onCreateView: Loading")
+                    is MovieState.Success -> data.data.collect {
+                        Log.d("TAG", "onCreateView: $it")
+                        movieTopRatingAdapter.setData(it)
                     }
                     is MovieState.Error -> Log.d("TAG", "onCreateView: ${data.message}")
                 }

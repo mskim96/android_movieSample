@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieDataSource {
     suspend fun getNewMovies(): Flow<List<MovieResponse.MovieData.MovieModel>>
+    suspend fun getTopRatingMovies(): Flow<List<MovieResponse.MovieData.MovieModel>>
 }
