@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.minseongkim.android_moviesample.R
 import com.minseongkim.android_moviesample.databinding.FragmentMovieDetailBinding
 import com.minseongkim.android_moviesample.domain.model.Movie
@@ -37,7 +38,9 @@ class MovieDetailFragment(val currentMovie: Movie?) : Fragment() {
                 it.start()
             }
         }
+        Glide.with(this).load(currentMovie?.coverImg).into(binding.imageView2)
 
+        binding.movie = currentMovie
         Log.d("TAG", "onCreateView: $currentMovie")
 
         return binding.root
