@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.minseongkim.android_moviesample.data.datastore.UserManager
+import com.minseongkim.android_moviesample.data.datastore.dataStore
 import com.minseongkim.android_moviesample.data.model.auth.UserState
 import com.minseongkim.android_moviesample.databinding.FragmentAuthSignUpBinding
 import com.minseongkim.android_moviesample.presentation.view.movie.MovieActivity
@@ -22,6 +24,9 @@ class AuthSignUpFragment : Fragment() {
     private val binding get() = _binding!!
     private val authViewModel: AuthViewModel by lazy {
         ViewModelProvider(requireActivity()).get(AuthViewModel::class.java)
+    }
+    private val userManager: UserManager by lazy {
+        UserManager(requireContext().dataStore)
     }
 
     override fun onCreateView(
@@ -46,7 +51,7 @@ class AuthSignUpFragment : Fragment() {
                     is UserState.Error -> showToastMessage(value.errorMessage)
                     is UserState.Success -> {
                         val intent = Intent(requireActivity(), MovieActivity::class.java)
-                        intent.putExtra("uid", value.data)
+                        userManager.storeUser(value.data)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(intent)
