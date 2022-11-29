@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.minseongkim.android_moviesample.R
 import com.minseongkim.android_moviesample.databinding.FragmentMovieDetailBinding
 import com.minseongkim.android_moviesample.domain.model.Movie
+import com.minseongkim.android_moviesample.presentation.viewModel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +21,9 @@ class MovieDetailFragment(val currentMovie: Movie?) : Fragment() {
 
     private var _binding: FragmentMovieDetailBinding? = null
     private val binding get() = _binding!!
+    private val authViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(AuthViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -41,7 +46,10 @@ class MovieDetailFragment(val currentMovie: Movie?) : Fragment() {
         Glide.with(this).load(currentMovie?.coverImg).into(binding.imageView2)
 
         binding.movie = currentMovie
-        Log.d("TAG", "onCreateView: $currentMovie")
+
+        binding.movieLikeButton.setOnClickListener {
+            authViewModel.postLikeMovie(currentMovie!!)
+        }
 
         return binding.root
     }

@@ -52,6 +52,9 @@ class MovieViewModel @Inject constructor(
     }
 
 
+    /**
+     * Get Method
+     */
     private fun getNewMovies() = viewModelScope.launch(Dispatchers.IO) {
         runCatching {
             getNewMovieUseCase.getNewMovies()
@@ -126,4 +129,6 @@ class MovieViewModel @Inject constructor(
             )
         }
     }
+
+
 }

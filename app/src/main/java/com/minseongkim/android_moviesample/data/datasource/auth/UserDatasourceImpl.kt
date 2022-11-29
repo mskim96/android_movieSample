@@ -2,8 +2,7 @@ package com.minseongkim.android_moviesample.data.datasource.auth
 
 import com.minseongkim.android_moviesample.data.db.auth.UserDao
 import com.minseongkim.android_moviesample.data.model.auth.UserEntity
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.minseongkim.android_moviesample.domain.model.Movie
 import javax.inject.Inject
 
 class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : UserDatasource {
@@ -21,5 +20,13 @@ class UserDatasourceImpl @Inject constructor(private val userDao: UserDao) : Use
 
     override fun getUserById(id: Long): UserEntity {
         return userDao.getUserById(id)
+    }
+
+    override fun getLikeMovieById(id: Long): Map<UserEntity, List<Movie>> {
+        return userDao.getLikeMovieById(id)
+    }
+
+    override fun postLikeMovie(movie: List<Movie>) {
+        return userDao.updateUserLikeMovie(movie)
     }
 }

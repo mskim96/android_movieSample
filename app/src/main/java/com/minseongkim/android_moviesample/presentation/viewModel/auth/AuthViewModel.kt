@@ -3,6 +3,8 @@ package com.minseongkim.android_moviesample.presentation.viewModel.auth
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.minseongkim.android_moviesample.data.model.auth.UserState
+import com.minseongkim.android_moviesample.domain.model.Movie
+import com.minseongkim.android_moviesample.domain.usecase.auth.PostLikeMovieUseCase
 import com.minseongkim.android_moviesample.domain.usecase.auth.SignInUseCase
 import com.minseongkim.android_moviesample.domain.usecase.auth.SignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,6 +19,7 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     private val signUpUseCase: SignUpUseCase,
     private val signInUseCase: SignInUseCase,
+    private val postLikeMovieUseCase: PostLikeMovieUseCase
 ) : ViewModel() {
 
     private val _userState = MutableSharedFlow<UserState>(
@@ -83,4 +86,10 @@ class AuthViewModel @Inject constructor(
                 return@launch
             }
         }
+
+    fun postLikeMovie(movie: Movie) {
+        viewModelScope.launch(Dispatchers.IO) {
+            postLikeMovieUseCase.postLikeMovie(movie)
+        }
+    }
 }

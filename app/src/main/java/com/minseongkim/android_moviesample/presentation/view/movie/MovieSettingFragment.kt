@@ -11,10 +11,12 @@ import com.minseongkim.android_moviesample.data.datastore.UserManager
 import com.minseongkim.android_moviesample.data.datastore.dataStore
 import com.minseongkim.android_moviesample.databinding.FragmentMovieSettingBinding
 import com.minseongkim.android_moviesample.presentation.view.auth.AuthActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieSettingFragment : Fragment() {
 
     private var _binding: FragmentMovieSettingBinding? = null

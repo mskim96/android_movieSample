@@ -1,15 +1,17 @@
 package com.minseongkim.android_moviesample.data.model.auth
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.minseongkim.android_moviesample.domain.model.Movie
 
 /**
  * Define User information
  */
 @Entity(tableName = "user_information_table")
 data class UserEntity(
-
     @PrimaryKey(autoGenerate = true)
     val uid: Long = 0,
 
@@ -27,4 +29,8 @@ data class UserEntity(
 
     @ColumnInfo(name = "updated_at")
     var updatedAt: Long = createdAt,
+
+    @Embedded val movie: Movie? = null,
+    @ColumnInfo(name = "like_movie")
+    val likeMovie: List<Movie>? = listOf()
 )
