@@ -7,30 +7,33 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.minseongkim.android_moviesample.databinding.MovieLikeListBinding
 import com.minseongkim.android_moviesample.databinding.MovieListBinding
 import com.minseongkim.android_moviesample.domain.model.Movie
 import com.minseongkim.android_moviesample.presentation.view.movie.MovieActivity
 import com.minseongkim.android_moviesample.presentation.view.movie.MovieDetailFragment
 
-class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieLikeAdapter() : RecyclerView.Adapter<MovieLikeAdapter.MovieViewHolder>() {
 
-    private val dummy = Movie(1)
-    private var movieList = listOf(dummy, dummy, dummy, dummy)
+    private var movieList = listOf<Movie>()
 
-
-    inner class MovieViewHolder(private val binding: MovieListBinding) :
+    inner class MovieViewHolder(private val binding: MovieLikeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(currentMovie: Movie) {
-            Glide.with(binding.root).load(currentMovie.coverImg).override(130, 200).into(binding.imageView3)
+            Glide.with(binding.root).load(currentMovie.coverImg).into(binding.imageView5)
             binding.movie = currentMovie
-            binding.imageView3.setOnClickListener {
-                (binding.root.context.findActivity() as MovieActivity).setFragment(1, data = currentMovie)
+            binding.movieLikeContainer.setOnClickListener {
+                (binding.root.context.findActivity() as MovieActivity).setFragment(
+                    1,
+                    data = currentMovie
+                )
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = MovieListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            MovieLikeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(binding)
     }
 

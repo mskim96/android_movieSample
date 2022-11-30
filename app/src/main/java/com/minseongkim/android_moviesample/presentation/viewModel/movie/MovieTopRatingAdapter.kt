@@ -14,7 +14,7 @@ import com.minseongkim.android_moviesample.presentation.view.movie.MovieActivity
 class MovieTopRatingAdapter() :
     RecyclerView.Adapter<MovieTopRatingAdapter.MovieViewHolder>() {
 
-    private val dummy = Movie()
+    private val dummy = Movie(1)
     private var movieList = listOf(dummy, dummy, dummy, dummy)
 
 

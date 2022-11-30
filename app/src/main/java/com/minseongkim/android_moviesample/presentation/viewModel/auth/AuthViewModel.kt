@@ -3,6 +3,7 @@ package com.minseongkim.android_moviesample.presentation.viewModel.auth
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.minseongkim.android_moviesample.data.model.auth.UserState
+import com.minseongkim.android_moviesample.data.model.movie.MovieState
 import com.minseongkim.android_moviesample.domain.model.Movie
 import com.minseongkim.android_moviesample.domain.usecase.auth.PostLikeMovieUseCase
 import com.minseongkim.android_moviesample.domain.usecase.auth.SignInUseCase
@@ -10,8 +11,7 @@ import com.minseongkim.android_moviesample.domain.usecase.auth.SignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,6 +28,10 @@ class AuthViewModel @Inject constructor(
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
     val userState = _userState.asSharedFlow()
+
+    private val _likeMovie: MutableStateFlow<MovieState<Flow<List<Movie>>>> =
+        MutableStateFlow(MovieState.Loading())
+    val likeMovie = _likeMovie.asStateFlow()
 
     /**
      * DB Method
@@ -86,6 +90,24 @@ class AuthViewModel @Inject constructor(
                 return@launch
             }
         }
+
+    fun getUserLikeMovie(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                postLikeMovieUseCase.getUserLikeMovie(id)
+            }.onSuccess { data ->
+                _likeMovie.emit(MovieState.Success(data))
+            }.onFailure { throwable ->
+                _likeMovie.emit(
+                    MovieState.Error(
+                        message = throwable.message.toString(),
+                        data = null
+                    )
+                )
+            }
+        }
+    }
+
 
     fun postLikeMovie(movie: Movie) {
         viewModelScope.launch(Dispatchers.IO) {

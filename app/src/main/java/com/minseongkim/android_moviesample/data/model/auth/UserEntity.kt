@@ -29,8 +29,4 @@ data class UserEntity(
 
     @ColumnInfo(name = "updated_at")
     var updatedAt: Long = createdAt,
-
-    @Embedded val movie: Movie? = null,
-    @ColumnInfo(name = "like_movie")
-    val likeMovie: List<Movie>? = listOf()
 )

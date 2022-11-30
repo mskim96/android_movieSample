@@ -13,7 +13,7 @@ fun movieMapper(movies: List<MovieResponse.MovieData.MovieModel>): List<Movie> {
                 rating = it.rating,
                 genres = it.genres,
                 description = it.description,
-                coverImg = it.coverImg
+                coverImg = it.coverImg,
             )
         }
     }

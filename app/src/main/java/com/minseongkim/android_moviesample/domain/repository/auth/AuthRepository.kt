@@ -10,6 +10,7 @@ interface AuthRepository {
 
     fun getExistEmail(email: String): Boolean
     fun getUserById(id: Long): UserEntity
+    suspend fun getUserLikeMovie(id: Long): Flow<List<Movie>>
 
     fun postLikeMovie(movie: Movie)
 }

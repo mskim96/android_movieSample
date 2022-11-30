@@ -13,7 +13,7 @@ import com.minseongkim.android_moviesample.presentation.view.movie.MovieActivity
 
 class MovieGenreDramaAdapter() : RecyclerView.Adapter<MovieGenreDramaAdapter.MovieViewHolder>() {
 
-    private val dummy = Movie()
+    private val dummy = Movie(1)
     private var movieList = listOf(dummy, dummy, dummy, dummy)
 
 

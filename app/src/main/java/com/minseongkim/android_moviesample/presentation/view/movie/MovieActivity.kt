@@ -2,6 +2,7 @@ package com.minseongkim.android_moviesample.presentation.view.movie
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction

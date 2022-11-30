@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.test.filters.SmallTest
 import androidx.test.runner.AndroidJUnitRunner
 import com.minseongkim.android_moviesample.data.db.auth.UserDao
-import com.minseongkim.android_moviesample.data.db.auth.UserDatabase
+import com.minseongkim.android_moviesample.data.db.auth.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,7 +39,7 @@ object TestAppModule {
     @Provides
     @Named("test_db")
     fun provideInMemoryDb(@ApplicationContext context: Context) = Room.inMemoryDatabaseBuilder(
-        context, UserDatabase::class.java
+        context, AppDatabase::class.java
     ).allowMainThreadQueries().build()
 }
 
@@ -51,7 +51,7 @@ class UserDaoTest {
 
     @Inject
     @Named("test_db")
-    lateinit var database: UserDatabase
+    lateinit var database: AppDatabase
     private lateinit var userDao: UserDao
 
 
